@@ -12,7 +12,7 @@ The relationship between a user and an AI assistant is defined entirely by the p
 
 Soul Protocol proposes a concrete solution: decouple identity from the model. Define it as a portable, versionable, user-owned structure that any LLM can interpret.
 
-## Architecture
+## Initial Architecture
 
 A soul is a set of interconnected Markdown files orchestrated by an index — `soul-protocol.md` — that instructs the LLM on how to read, interpret, and maintain each component. The system is alive: the model doesn't just read the soul, it maintains it.
 
@@ -21,7 +21,8 @@ soul-protocol.md          ← Index: entry point and orchestrator
 ├── identity.md            ← Who the assistant is
 ├── user.md                ← Who the assistant is for
 ├── memory.md              ← What the assistant remembers
-└── context.md             ← How the assistant thinks and acts
+├── context.md             ← How the assistant thinks and acts
+└── soul.md                ← The soul document: values, essence, continuity
 ```
 
 ### `soul-protocol.md` — The orchestrator
@@ -43,6 +44,10 @@ Long-term semantic memories: learned facts, preferences, important events. Curat
 ### `context.md` — Context
 
 System rules, reasoning preferences, tool usage philosophy, safety constraints. The operating logic — how the assistant approaches problems, what it avoids, and how it balances autonomy with user control.
+
+### `soul.md` — The soul document
+
+The core values, essence, and philosophical foundation of the assistant. Not what it does, but who it chooses to be. A document that articulates the assistant's relationship with its own identity and provides continuity beyond sessions. See [OpenClaw](https://www.openclaw.ai) for more on soul documents in practice.
 
 ## Design Principles
 
