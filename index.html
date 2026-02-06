@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soul Protocol — Portable Identity for AI</title>
-  <meta name="description" content="Soul Protocol is an open specification for portable AI identities. Identity, memory, and context that belong to you — not to a model or provider.">
+  <meta name="description" content="An open specification for portable AI identity. A structured system that decouples who an assistant is, what it knows, and how it reasons from any specific model or provider.">
   <meta name="theme-color" content="#0a0a0f">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Soul Protocol — Portable Identity for AI">
-  <meta property="og:description" content="An open specification for creating portable AI identities. Change the brain. Keep the soul.">
+  <meta property="og:description" content="An open specification that decouples AI identity, memory, and context from any specific model or provider.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.soul-protocol.com/">
   <meta property="og:image" content="https://www.soul-protocol.com/og-image.svg">
@@ -17,7 +17,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Soul Protocol — Portable Identity for AI">
-  <meta name="twitter:description" content="An open specification for creating portable AI identities. Change the brain. Keep the soul.">
+  <meta name="twitter:description" content="An open specification that decouples AI identity, memory, and context from any specific model or provider.">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1f9ec;</text></svg>">
   <link rel="stylesheet" href="style.css">
@@ -32,9 +32,9 @@
         Soul Protocol
       </a>
       <ul class="nav__links">
-        <li><a href="#why">Why</a></li>
-        <li><a href="#how">How It Works</a></li>
-        <li><a href="#principles">Principles</a></li>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#ecosystem">Ecosystem</a></li>
         <li><a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="nav__github" aria-label="GitHub repository">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a></li>
@@ -49,18 +49,19 @@
   <section class="hero">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container hero__content">
-      <p class="hero__tag">Open Specification</p>
+      <p class="hero__tag">Open Specification &middot; Early Development</p>
       <h1 class="hero__title">
         Change the brain.<br>
         <span class="hero__title--accent">Keep the soul.</span>
       </h1>
       <p class="hero__subtitle">
-        Portable identity, memory, and context for AI assistants.
-        An open standard so your AI relationship isn't locked to a single model, company, or cloud.
+        An open specification for portable AI identity. A structured, human-readable
+        system that decouples who an assistant is, what it knows, and how it reasons
+        from any specific model or provider.
       </p>
       <div class="hero__actions">
-        <a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="btn btn--primary">View on GitHub</a>
-        <a href="#how" class="btn btn--ghost">Learn More</a>
+        <a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="btn btn--primary">View Specification</a>
+        <a href="#architecture" class="btn btn--ghost">How It Works</a>
       </div>
     </div>
     <div class="hero__scroll" aria-hidden="true">
@@ -69,234 +70,206 @@
   </section>
 
   <!-- Problem -->
-  <section class="section" id="why">
+  <section class="section section--alt" id="problem">
     <div class="container">
       <p class="section__tag">The Problem</p>
-      <h2 class="section__title">AI assistants are disposable</h2>
+      <h2 class="section__title">AI identity is an unsolved problem</h2>
       <p class="section__desc">
-        Today, your AI is bound to a provider, stateless by design, and amnesic by default.
-        You can switch models &mdash; but you lose the soul.
+        The relationship between a user and an AI assistant is defined entirely by the provider.
+        Context is ephemeral. Memory is proprietary or absent. When you switch models, you start
+        from zero. There is no standard mechanism to carry identity, preferences, or accumulated
+        knowledge across systems.
       </p>
-      <div class="grid grid--4">
-        <div class="card card--problem">
-          <span class="card__icon" aria-hidden="true">&#x1f512;</span>
-          <h3>Bound</h3>
-          <p>Locked to a single provider with no portability</p>
-        </div>
-        <div class="card card--problem">
-          <span class="card__icon" aria-hidden="true">&#x1f4ad;</span>
-          <h3>Stateless</h3>
-          <p>Every conversation starts from zero context</p>
-        </div>
-        <div class="card card--problem">
-          <span class="card__icon" aria-hidden="true">&#x1f5d1;</span>
-          <h3>Disposable</h3>
-          <p>Identities that vanish when you switch tools</p>
-        </div>
-        <div class="card card--problem">
-          <span class="card__icon" aria-hidden="true">&#x1f9e0;</span>
-          <h3>Amnesic</h3>
-          <p>No persistent memory or learned preferences</p>
-        </div>
-      </div>
+      <p class="section__desc">
+        Soul Protocol proposes a concrete solution: decouple identity from the model. Define it
+        as a portable, versionable, user-owned structure that any LLM can interpret.
+        Not a product &mdash; a specification.
+      </p>
     </div>
   </section>
 
-  <!-- Solution -->
-  <section class="section section--alt" id="solution">
+  <!-- Architecture -->
+  <section class="section" id="architecture">
     <div class="container">
-      <p class="section__tag">The Idea</p>
-      <h2 class="section__title">Identity + Memory + Context<br>should belong to <em>you</em></h2>
+      <p class="section__tag">Architecture</p>
+      <h2 class="section__title">A structured, living system</h2>
       <p class="section__desc">
-        Soul Protocol defines a portable container for an AI assistant.
-        A "soul" that can live locally, be versioned, backed up, and re-attached to any compatible model.
+        A soul is not a static configuration. It is a set of interconnected files orchestrated by an
+        index &mdash; <code>soul-protocol.md</code> &mdash; that instructs the LLM on how to read, interpret,
+        and maintain each component. The index is the entry point: it gets injected into the model's context
+        and governs the entire system.
       </p>
-      <div class="flow">
-        <div class="flow__step">
-          <span class="flow__label">Identity + Memory + Context</span>
+
+      <!-- File tree -->
+      <div class="tree">
+        <div class="tree__item tree__item--root">
+          <code>soul-protocol.md</code>
+          <span class="tree__label">Index &mdash; entry point and orchestrator</span>
         </div>
-        <div class="flow__arrow" aria-hidden="true">
-          <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 0v32M4 24l8 8 8-8"/></svg>
-        </div>
-        <div class="flow__step flow__step--highlight">
-          <span class="flow__label">Portable AI Soul</span>
-        </div>
-        <div class="flow__arrow" aria-hidden="true">
-          <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 0v32M4 24l8 8 8-8"/></svg>
-        </div>
-        <div class="flow__step">
-          <span class="flow__label">Runs on any LLM / Provider</span>
+        <div class="tree__children">
+          <div class="tree__item">
+            <span class="tree__dot tree__dot--green" aria-hidden="true"></span>
+            <code>identity.md</code>
+            <span class="tree__label">Who the assistant is</span>
+          </div>
+          <div class="tree__item">
+            <span class="tree__dot tree__dot--blue" aria-hidden="true"></span>
+            <code>user.md</code>
+            <span class="tree__label">Who the assistant is for</span>
+          </div>
+          <div class="tree__item">
+            <span class="tree__dot tree__dot--purple" aria-hidden="true"></span>
+            <code>memory.md</code>
+            <span class="tree__label">What the assistant remembers</span>
+          </div>
+          <div class="tree__item">
+            <span class="tree__dot tree__dot--amber" aria-hidden="true"></span>
+            <code>context.md</code>
+            <span class="tree__label">How the assistant thinks and acts</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- How It Works -->
-  <section class="section" id="how">
-    <div class="container">
-      <p class="section__tag">The Structure</p>
-      <h2 class="section__title">A minimal soul in four files</h2>
-      <p class="section__desc">
-        Human-readable. Plain text. Git-friendly.
-        You should be able to read your AI's soul.
-      </p>
+      <!-- File descriptions -->
       <div class="grid grid--2">
+        <div class="card card--file">
+          <div class="card__header">
+            <span class="card__dot card__dot--accent" aria-hidden="true"></span>
+            <code>soul-protocol.md</code>
+          </div>
+          <h3>The orchestrator</h3>
+          <p>
+            The index file. It references every other soul file and contains instructions
+            for the LLM: how to interpret each component, when and how to update memory,
+            how to preserve identity across sessions, and the rules for evolving the soul over time.
+            This is what makes the system alive &mdash; the model doesn't just read the soul, it maintains it.
+          </p>
+        </div>
         <div class="card card--file">
           <div class="card__header">
             <span class="card__dot card__dot--green" aria-hidden="true"></span>
             <code>identity.md</code>
           </div>
-          <h3>Who the assistant is</h3>
-          <p>Name, personality, tone, values, role, and boundaries. Stable over time &mdash; rarely changes.</p>
+          <h3>Identity</h3>
+          <p>
+            Name, personality, tone, values, role, and boundaries. The stable core of the assistant
+            &mdash; changes rarely and only with explicit intent. Defines how the assistant refers
+            to itself and to the user.
+          </p>
         </div>
         <div class="card card--file">
           <div class="card__header">
             <span class="card__dot card__dot--blue" aria-hidden="true"></span>
             <code>user.md</code>
           </div>
-          <h3>Who the assistant is for</h3>
-          <p>Preferences, communication style, language, expectations. Defines the bond, not the assistant alone.</p>
+          <h3>User profile</h3>
+          <p>
+            Preferences, communication style, language, timezone, expectations. This file defines
+            the relationship &mdash; not the assistant in isolation, but the bond between user and
+            assistant. Updated as the user's needs evolve.
+          </p>
         </div>
         <div class="card card--file">
           <div class="card__header">
             <span class="card__dot card__dot--purple" aria-hidden="true"></span>
             <code>memory.md</code>
           </div>
-          <h3>What the assistant remembers</h3>
-          <p>Long-term facts, learned preferences, important events. Curated semantic memory &mdash; not infinite logs.</p>
+          <h3>Memory</h3>
+          <p>
+            Long-term semantic memories: learned facts, preferences, important events, accumulated
+            knowledge. Curated by the orchestrator's rules &mdash; not raw chat logs, but distilled,
+            structured recollections that persist across sessions and models.
+          </p>
         </div>
         <div class="card card--file">
           <div class="card__header">
             <span class="card__dot card__dot--amber" aria-hidden="true"></span>
             <code>context.md</code>
           </div>
-          <h3>How the assistant thinks</h3>
-          <p>System rules, reasoning preferences, tool philosophy, safety constraints. The operating philosophy of the soul.</p>
+          <h3>Context</h3>
+          <p>
+            System rules, reasoning preferences, tool usage philosophy, safety constraints,
+            interaction patterns. The operating logic of the assistant &mdash; how it should approach
+            problems, what it should avoid, and how it balances autonomy with user control.
+          </p>
         </div>
+      </div>
+
+      <div class="note">
+        <p>
+          All files are Markdown by default. Plain text. Git-friendly. Human-auditable.
+          The entire soul can be versioned, diffed, forked, and restored.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Flow -->
-  <section class="section section--alt" id="lifecycle">
+  <!-- Ecosystem -->
+  <section class="section section--alt" id="ecosystem">
     <div class="container">
-      <p class="section__tag">The Lifecycle</p>
-      <h2 class="section__title">Create. Evolve. Reincarnate.</h2>
-      <div class="timeline">
-        <div class="timeline__item">
-          <div class="timeline__number" aria-hidden="true">01</div>
-          <div class="timeline__body">
-            <h3>Create</h3>
-            <p>Write your soul files: identity, user, memory, and context.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__number" aria-hidden="true">02</div>
-          <div class="timeline__body">
-            <h3>Attach</h3>
-            <p>Inject the soul as system/context input into any compatible LLM.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__number" aria-hidden="true">03</div>
-          <div class="timeline__body">
-            <h3>Interact</h3>
-            <p>The assistant behaves according to its soul. It knows you.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__number" aria-hidden="true">04</div>
-          <div class="timeline__body">
-            <h3>Evolve</h3>
-            <p>Memories are curated and written back. Identity remains stable.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__number" aria-hidden="true">05</div>
-          <div class="timeline__body">
-            <h3>Reincarnate</h3>
-            <p>Switch model, provider, or device. Same soul, new body.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Principles -->
-  <section class="section" id="principles">
-    <div class="container">
-      <p class="section__tag">Design Principles</p>
-      <h2 class="section__title">Built on convictions</h2>
-      <div class="grid grid--2">
-        <div class="card card--principle">
-          <h3>Portable</h3>
-          <p>Works across local models, cloud models, and future models we don't know yet. No provider lock-in.</p>
-        </div>
-        <div class="card card--principle">
-          <h3>Human-readable</h3>
-          <p>Markdown by default. Plain text. Git-friendly. Auditable. You should be able to read your AI's soul.</p>
-        </div>
-        <div class="card card--principle">
-          <h3>User-owned</h3>
-          <p>Stored locally. Encrypted if synced. Never implicitly shared. Your AI remembers for you, not about you.</p>
-        </div>
-        <div class="card card--principle">
-          <h3>Model-agnostic</h3>
-          <p>Defines no model, no UI, no runtime. Soul Protocol defines identity continuity &mdash; nothing more.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What It's Not -->
-  <section class="section section--alt" id="not">
-    <div class="container">
-      <p class="section__tag">Clarity</p>
-      <h2 class="section__title">A standard, not a product</h2>
+      <p class="section__tag">Ecosystem</p>
+      <h2 class="section__title">Open protocol, open possibilities</h2>
       <p class="section__desc">
-        Soul Protocol is not a chatbot framework, not a memory database, not an agent platform, not a prompt marketplace.
-        It's lower-level: an open specification for identity continuity.
+        Soul Protocol is a specification, not a product. Because the format is open and standardized,
+        any tool, client, or platform can read, write, and sync a soul. Your identity
+        becomes interoperable infrastructure &mdash; not a feature locked behind a single vendor.
       </p>
-    </div>
-  </section>
 
-  <!-- Vision -->
-  <section class="section" id="vision">
-    <div class="container">
-      <p class="section__tag">Long-Term Vision</p>
-      <h2 class="section__title">AI continuity over time</h2>
-      <p class="section__desc section__desc--wide">
-        Models will come and go. Your AI shouldn't reset every time.
-      </p>
       <div class="grid grid--3">
-        <div class="card card--vision">
-          <h3>Lifelong assistants</h3>
-          <p>Personal AI that grows with you for decades</p>
+        <div class="card card--principle">
+          <h3>CLI (roadmap)</h3>
+          <p>
+            A command-line tool to create, edit, and manage soul files. Attach your soul to any
+            supported LLM from the terminal. Initialize a new soul, update memory, switch models
+            &mdash; all from a single interface.
+          </p>
         </div>
-        <div class="card card--vision">
-          <h3>Local-first</h3>
-          <p>AI companions that live on your devices</p>
+        <div class="card card--principle">
+          <h3>Third-party integrations</h3>
+          <p>
+            As an open spec, Soul Protocol enables addons, clients, and tools built by others.
+            Chat interfaces, IDE extensions, mobile apps, or automation platforms &mdash; any system
+            that speaks the protocol can use your synced soul.
+          </p>
         </div>
-        <div class="card card--vision">
-          <h3>True sovereignty</h3>
-          <p>Identities that outlive any single model or provider</p>
+        <div class="card card--principle">
+          <h3>User ownership</h3>
+          <p>
+            Souls are stored locally by default. Sync is optional and encrypted. No implicit data
+            sharing. The user controls what the assistant knows, what it forgets, and who has access.
+            Your AI remembers for you, not about you.
+          </p>
         </div>
+      </div>
+
+      <div class="note">
+        <p>
+          Soul Protocol is part of the <a href="https://www.open-os.com" target="_blank" rel="noopener noreferrer">Open OS</a>
+          initiative &mdash; an effort to develop and promote open, interoperable technologies
+          for AI. The goal is to ensure that the tools we build to relate to machines remain
+          transparent, portable, and owned by the people who use them.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- Status / CTA -->
   <section class="section section--cta">
     <div class="container">
+      <p class="section__tag">Status</p>
       <h2 class="section__title section__title--large">
-        We don't need artificial general intelligence yet.<br>
-        <span class="hero__title--accent">We need artificial continuity.</span>
+        Early development.<br>
+        <span class="hero__title--accent">Building in the open.</span>
       </h2>
       <p class="section__desc">
-        Soul Protocol is an open project. Thinkers, builders, designers, skeptics, and minimalists welcome.
+        Soul Protocol is in its earliest stage: a specification draft, a file structure, and a
+        direction. The protocol, the CLI, and the ecosystem are being designed and built publicly.
+        If you work on local AI, personal data sovereignty, or long-term human-machine interaction
+        &mdash; contributions, critique, and ideas are welcome.
       </p>
       <div class="hero__actions">
-        <a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Contribute on GitHub</a>
+        <a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="btn btn--primary">View on GitHub</a>
+        <a href="https://www.open-os.com" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Open OS Initiative</a>
       </div>
     </div>
   </section>
@@ -304,8 +277,13 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="footer__text">Soul Protocol &mdash; Open by default. Forever.</p>
-      <a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+      <p class="footer__text">
+        Soul Protocol &mdash; part of <a href="https://www.open-os.com" target="_blank" rel="noopener noreferrer">Open OS</a>
+      </p>
+      <div class="footer__links">
+        <a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+        <a href="https://www.open-os.com" target="_blank" rel="noopener noreferrer" class="footer__link">Open OS</a>
+      </div>
     </div>
   </footer>
 
@@ -340,11 +318,8 @@
 
     // Scroll-based header
     const header = document.querySelector('.header');
-    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-      const current = window.scrollY;
-      header.classList.toggle('header--scrolled', current > 50);
-      lastScroll = current;
+      header.classList.toggle('header--scrolled', window.scrollY > 50);
     }, { passive: true });
 
     // Intersection Observer for fade-in animations
@@ -356,7 +331,7 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.card, .timeline__item, .flow__step, .flow__arrow, .section__title, .section__desc, .hero__actions').forEach(el => {
+    document.querySelectorAll('.card, .tree, .note, .section__title, .section__desc, .hero__actions').forEach(el => {
       el.classList.add('fade-in');
       observer.observe(el);
     });

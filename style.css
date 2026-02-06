@@ -60,6 +60,10 @@ img {
   display: block;
 }
 
+code {
+  font-family: var(--font-mono);
+}
+
 /* --- Container --- */
 .container {
   width: 100%;
@@ -247,9 +251,9 @@ img {
 }
 
 .hero__subtitle {
-  max-width: 580px;
+  max-width: 600px;
   margin: 0 auto 40px;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
   line-height: 1.7;
 }
@@ -324,7 +328,7 @@ img {
 }
 
 .section--cta {
-  padding: 120px 0;
+  padding: 100px 0;
   text-align: center;
 }
 
@@ -336,6 +340,7 @@ img {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .section__title {
@@ -344,6 +349,7 @@ img {
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .section__title--large {
@@ -357,45 +363,25 @@ img {
 }
 
 .section__desc {
-  max-width: 600px;
+  max-width: 640px;
   font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.7;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.section__desc:last-of-type {
   margin-bottom: 48px;
 }
 
-.section__desc--wide {
-  max-width: 700px;
-}
-
-.section--cta .section__desc,
-.section--alt .section__desc {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section--cta .section__title,
-.section--alt .section__title,
-.section--cta .section__tag,
-.section--alt .section__tag {
-  text-align: center;
-}
-
-#why .section__desc,
-#how .section__desc {
-  text-align: left;
-}
-
-/* Center tags and titles in all sections for consistency */
-.section__tag,
-.section__title {
-  text-align: center;
-}
-
-.section__desc {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+.section__desc code {
+  color: var(--text);
+  font-size: 0.95em;
+  padding: 2px 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
 }
 
 /* --- Grid --- */
@@ -412,8 +398,11 @@ img {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.grid--4 {
-  grid-template-columns: repeat(4, 1fr);
+/* Odd card in 2-col grid: span full width, centered */
+.grid--2 > :last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 10px);
+  justify-self: center;
 }
 
 /* --- Cards --- */
@@ -432,7 +421,7 @@ img {
 }
 
 .card h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 8px;
   letter-spacing: -0.01em;
@@ -441,13 +430,7 @@ img {
 .card p {
   font-size: 0.92rem;
   color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.card__icon {
-  display: block;
-  font-size: 1.5rem;
-  margin-bottom: 16px;
+  line-height: 1.65;
 }
 
 /* File cards */
@@ -455,22 +438,23 @@ img {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .card__dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
+.card__dot--accent { background: var(--accent); }
 .card__dot--green { background: var(--green); }
 .card__dot--blue { background: var(--blue); }
 .card__dot--purple { background: var(--purple); }
 .card__dot--amber { background: var(--amber); }
 
 .card--file code {
-  font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--text-dim);
 }
@@ -482,105 +466,92 @@ img {
   border-bottom-left-radius: 0;
 }
 
-/* Vision cards */
-.card--vision {
-  text-align: center;
-  border-color: transparent;
-  background: linear-gradient(var(--surface), var(--surface)) padding-box,
-              linear-gradient(135deg, var(--accent-glow), transparent) border-box;
-  border: 1px solid transparent;
-}
-
-.card--vision:hover {
-  background: linear-gradient(var(--surface-hover), var(--surface-hover)) padding-box,
-              linear-gradient(135deg, var(--accent), transparent 60%) border-box;
-}
-
-/* --- Flow diagram --- */
-.flow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-top: 48px;
-}
-
-.flow__step {
-  padding: 16px 32px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm);
+/* --- File tree --- */
+.tree {
+  max-width: 520px;
+  margin: 0 auto 48px;
+  padding: 24px 28px;
   background: var(--surface);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
 }
 
-.flow__step--highlight {
-  border-color: var(--accent);
-  color: var(--text);
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
-  box-shadow: 0 0 24px var(--accent-glow);
-}
-
-.flow__arrow {
-  color: var(--text-dim);
-}
-
-/* --- Timeline --- */
-.timeline {
-  max-width: 640px;
-  margin: 48px auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  position: relative;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 24px;
-  top: 24px;
-  bottom: 24px;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--accent), var(--border));
-}
-
-.timeline__item {
-  display: flex;
-  gap: 24px;
-  padding: 20px 0;
-  position: relative;
-}
-
-.timeline__number {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+.tree__item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  color: var(--accent-light);
-  border: 1px solid var(--border-light);
-  border-radius: 50%;
-  background: var(--bg);
-  position: relative;
-  z-index: 1;
+  gap: 10px;
+  padding: 6px 0;
 }
 
-.timeline__body h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
+.tree__item code {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.tree__item--root {
+  padding-bottom: 12px;
   margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
 }
 
-.timeline__body p {
+.tree__item--root code {
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.tree__children {
+  padding-left: 20px;
+  border-left: 1px solid var(--border-light);
+  margin-left: 4px;
+}
+
+.tree__children .tree__item {
+  padding: 5px 0;
+}
+
+.tree__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tree__dot--green { background: var(--green); }
+.tree__dot--blue { background: var(--blue); }
+.tree__dot--purple { background: var(--purple); }
+.tree__dot--amber { background: var(--amber); }
+
+.tree__label {
+  color: var(--text-dim);
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+/* --- Note --- */
+.note {
+  margin-top: 32px;
+  padding: 20px 24px;
+  border-left: 2px solid var(--border-light);
+  background: transparent;
+}
+
+.note p {
   font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.note a {
+  color: var(--accent-light);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+
+.note a:hover {
+  border-bottom-color: var(--accent-light);
 }
 
 /* --- Footer --- */
@@ -598,6 +569,20 @@ img {
 .footer__text {
   font-size: 0.85rem;
   color: var(--text-dim);
+}
+
+.footer__text a {
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.footer__text a:hover {
+  color: var(--text);
+}
+
+.footer__links {
+  display: flex;
+  gap: 24px;
 }
 
 .footer__link {
@@ -625,21 +610,12 @@ img {
 /* Stagger children */
 .grid .card.fade-in:nth-child(1) { transition-delay: 0s; }
 .grid .card.fade-in:nth-child(2) { transition-delay: 0.1s; }
-.grid .card.fade-in:nth-child(3) { transition-delay: 0.2s; }
-.grid .card.fade-in:nth-child(4) { transition-delay: 0.3s; }
-
-.timeline__item.fade-in:nth-child(1) { transition-delay: 0s; }
-.timeline__item.fade-in:nth-child(2) { transition-delay: 0.1s; }
-.timeline__item.fade-in:nth-child(3) { transition-delay: 0.2s; }
-.timeline__item.fade-in:nth-child(4) { transition-delay: 0.3s; }
-.timeline__item.fade-in:nth-child(5) { transition-delay: 0.4s; }
+.grid .card.fade-in:nth-child(3) { transition-delay: 0.15s; }
+.grid .card.fade-in:nth-child(4) { transition-delay: 0.2s; }
+.grid .card.fade-in:nth-child(5) { transition-delay: 0.25s; }
 
 /* --- Responsive --- */
 @media (max-width: 900px) {
-  .grid--4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .grid--3 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -677,9 +653,12 @@ img {
   }
 
   .grid--2,
-  .grid--3,
-  .grid--4 {
+  .grid--3 {
     grid-template-columns: 1fr;
+  }
+
+  .grid--2 > :last-child:nth-child(odd) {
+    max-width: 100%;
   }
 
   .hero {
@@ -718,8 +697,9 @@ img {
     align-items: stretch;
   }
 
-  .timeline::before {
-    left: 23px;
+  .tree {
+    padding: 20px;
+    font-size: 0.82rem;
   }
 
   .footer__inner {
