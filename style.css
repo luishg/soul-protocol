@@ -28,6 +28,7 @@
   --blue: #60a5fa;
   --purple: #a78bfa;
   --amber: #fbbf24;
+  --rose: #f472b6;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
   --max-width: 1120px;
@@ -449,10 +450,21 @@ code {
 .card__dot--blue { background: var(--blue); }
 .card__dot--purple { background: var(--purple); }
 .card__dot--amber { background: var(--amber); }
+.card__dot--rose { background: var(--rose); }
 
 .card--file code {
   font-size: 0.85rem;
   color: var(--text-dim);
+}
+
+.card--file a {
+  color: var(--accent-light);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+
+.card--file a:hover {
+  border-bottom-color: var(--accent-light);
 }
 
 /* Principle cards */
@@ -518,6 +530,7 @@ code {
 .tree__dot--blue { background: var(--blue); }
 .tree__dot--purple { background: var(--purple); }
 .tree__dot--amber { background: var(--amber); }
+.tree__dot--rose { background: var(--rose); }
 
 .tree__label {
   color: var(--text-dim);
