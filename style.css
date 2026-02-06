@@ -112,20 +112,10 @@ code {
   color: var(--accent-light);
 }
 
-.nav__logo-icon {
-  width: 24px;
-  height: 24px;
-  background: var(--accent);
-  border-radius: 6px;
-  position: relative;
-}
-
-.nav__logo-icon::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 2px solid var(--bg);
-  border-radius: 3px;
+.nav__logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .nav__links {
