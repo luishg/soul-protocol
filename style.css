@@ -296,6 +296,12 @@ code {
   transform: translateY(-1px);
 }
 
+.btn--disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+
 .btn--ghost {
   background: transparent;
   color: var(--text-muted);
