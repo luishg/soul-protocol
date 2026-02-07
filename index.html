@@ -36,6 +36,7 @@
         <li><a href="#problem">Problem</a></li>
         <li><a href="#architecture">Architecture</a></li>
         <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="#download">Templates</a></li>
         <li><a href="https://github.com/luishg/soul-protocol" target="_blank" rel="noopener noreferrer" class="nav__github" aria-label="GitHub repository">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a></li>
@@ -221,11 +222,199 @@
           The entire soul can be versioned, diffed, forked, and restored.
         </p>
       </div>
+
+      <!-- Blank Template accordion -->
+      <details class="accordion">
+        <summary>
+          <span><span class="accordion__tag">Template</span> Blank template &mdash; the starting scaffold</span>
+        </summary>
+        <div class="accordion__body">
+          <p class="accordion__desc">
+            The <code>templates/blank/</code> directory contains a complete, ready-to-use scaffold
+            for creating a new soul. Copy it, fill in the files, and attach them to any LLM that
+            accepts text context. <code>soul-protocol.md</code> is the only file that ships complete &mdash;
+            it is identical across all souls.
+          </p>
+
+          <div class="accordion__tree">
+            <div class="accordion__tree-item">
+              <span class="accordion__tree-connector">   </span>
+              <code>soul-protocol.md</code>
+              <span>&mdash; Complete orchestrator. Session initialization (6 steps), memory lifecycle (ADD, UPDATE, DELETE, NOOP), compaction protocol (~100 entries), six-level conflict resolution hierarchy, evolution guidelines. Not a template &mdash; the protocol itself. Immutable by the assistant.</span>
+            </div>
+            <div class="accordion__tree-item">
+              <span class="accordion__tree-connector">   </span>
+              <code>identity.md</code>
+              <span>&mdash; Name, role, nature, personality traits with behavioral descriptions, voice &amp; tone (default register + situational shifts), values as actionable commitments, hard boundaries, anti-patterns. Specificity is key: &ldquo;responds with dry humor&rdquo; is useful; &ldquo;has a good personality&rdquo; is not.</span>
+            </div>
+            <div class="accordion__tree-item">
+              <span class="accordion__tree-connector">   </span>
+              <code>user.md</code>
+              <span>&mdash; Current-state profile that updates in-place. Communication preferences (length, formality, format, depth), technical profile (expertise, tools, domains), goals &amp; working context, interaction patterns observed over time, relationship notes. Never stores credentials.</span>
+            </div>
+            <div class="accordion__tree-item">
+              <span class="accordion__tree-connector">   </span>
+              <code>memory.md</code>
+              <span>&mdash; Initialized empty with five semantic categories: Facts, Preferences, Events, Decisions, Reflections. Structured entry format: <code>[date] [importance] content</code>. Archive section for compacted entries. Grows through conversation, managed by the orchestrator&rsquo;s compaction rules.</span>
+            </div>
+            <div class="accordion__tree-item">
+              <span class="accordion__tree-connector">   </span>
+              <code>context.md</code>
+              <span>&mdash; Reasoning approach, response format defaults, behavioral rules, tool &amp; resource usage, safety constraints, domain-specific rules (with sub-headers). Designed to stay under 150 discrete rules &mdash; beyond that, instruction-following degrades. Scaling via separate referenced files.</span>
+            </div>
+            <div class="accordion__tree-item">
+              <span class="accordion__tree-connector">   </span>
+              <code>soul.md</code>
+              <span>&mdash; Essence (a statement of being), core values (non-negotiable, override any conflicting rule), purpose (why it exists), relationship with self (its nature as AI), continuity (character persistence across stateless sessions), growth, boundaries of self (existential commitments). Changes rarely &mdash; updates are significant events.</span>
+            </div>
+          </div>
+
+          <p class="accordion__desc">
+            Each template file provides the full section structure, HTML comment guides explaining the purpose
+            and content of each section, placeholder entries, and concrete examples for every field.
+          </p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section section--alt" id="comparison">
+    <div class="container">
+      <details class="accordion">
+        <summary>
+          <span><span class="accordion__tag">Design</span> What differentiates Soul Protocol from similar identity models?</span>
+        </summary>
+        <div class="accordion__body">
+          <p class="accordion__desc">
+            Soul Protocol draws inspiration from <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light)">OpenClaw</a>,
+            which pioneered the use of plain Markdown files for agent identity. Both share the same foundational
+            insight &mdash; that identity should be portable, human-readable, and user-owned &mdash; but differ
+            in scope, structure, and focus.
+          </p>
+
+          <div class="comparison-list">
+
+            <div class="comparison-item">
+              <div class="comparison-item__title">Dedicated orchestrator</div>
+              <div class="comparison-item__row">
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">OpenClaw</span>
+                  <code>AGENTS.md</code> combines operational rules with group chat behavior, heartbeat logic,
+                  tool notes, and safety rules in a single file.
+                </div>
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">Soul Protocol</span>
+                  <code>soul-protocol.md</code> is focused exclusively on the identity lifecycle: initialization
+                  sequence, file management, memory operations, conflict resolution, and evolution.
+                </div>
+              </div>
+            </div>
+
+            <div class="comparison-item">
+              <div class="comparison-item__title">Clear separation of identity and soul</div>
+              <div class="comparison-item__row">
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">OpenClaw</span>
+                  <code>SOUL.md</code> mixes behavioral philosophy with personality traits.
+                  <code>IDENTITY.md</code> is a brief metadata record (name, emoji, creature, vibe).
+                </div>
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">Soul Protocol</span>
+                  <code>identity.md</code> is the full persona (personality, voice, values, boundaries, anti-patterns).
+                  <code>soul.md</code> is the philosophical foundation (essence, purpose, continuity, growth).
+                </div>
+              </div>
+            </div>
+
+            <div class="comparison-item">
+              <div class="comparison-item__title">Structured memory with lifecycle management</div>
+              <div class="comparison-item__row">
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">OpenClaw</span>
+                  Two-layer memory (daily logs + curated file) with no defined entry format, no formal
+                  lifecycle operations, and no compaction protocol.
+                </div>
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">Soul Protocol</span>
+                  Single file with structured entries (<code>[date] [importance] content</code>), five semantic
+                  categories, four explicit operations (ADD, UPDATE, DELETE, NOOP), and a six-step compaction protocol.
+                </div>
+              </div>
+            </div>
+
+            <div class="comparison-item">
+              <div class="comparison-item__title">Explicit conflict resolution</div>
+              <div class="comparison-item__row">
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">OpenClaw</span>
+                  No formally defined priority hierarchy. Relies on implicit model behavior and system
+                  prompt ordering.
+                </div>
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">Soul Protocol</span>
+                  Six-level hierarchy: Safety &gt; Soul &gt; User explicit instruction &gt; Context &gt; Identity &gt; Memory.
+                  When ambiguous, ask the user.
+                </div>
+              </div>
+            </div>
+
+            <div class="comparison-item">
+              <div class="comparison-item__title">Graduated mutability</div>
+              <div class="comparison-item__row">
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">OpenClaw</span>
+                  The agent can freely modify all files including <code>SOUL.md</code>. Informal rule:
+                  &ldquo;if you change this file, tell the user.&rdquo;
+                </div>
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">Soul Protocol</span>
+                  Each file has a defined stability level: memory is dynamic, user/context are semi-stable,
+                  identity is stable, soul is protected, the orchestrator is immutable by the assistant.
+                </div>
+              </div>
+            </div>
+
+            <div class="comparison-item">
+              <div class="comparison-item__title">Context as a first-class file</div>
+              <div class="comparison-item__row">
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">OpenClaw</span>
+                  No dedicated context file. Operational rules are embedded in <code>AGENTS.md</code>
+                  alongside unrelated concerns.
+                </div>
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">Soul Protocol</span>
+                  <code>context.md</code> is a dedicated file for behavioral directives, with a defined
+                  limit (~150 rules) and guidelines for scaling via referenced files.
+                </div>
+              </div>
+            </div>
+
+            <div class="comparison-item">
+              <div class="comparison-item__title">Specification purity</div>
+              <div class="comparison-item__row">
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">OpenClaw</span>
+                  Full agent platform: messaging integrations (WhatsApp, Telegram, Discord), heartbeat
+                  polling, tool skills, hooks, sub-agent orchestration, runtime file mutation.
+                </div>
+                <div class="comparison-item__cell">
+                  <span class="comparison-item__cell-label">Soul Protocol</span>
+                  Pure specification &mdash; no runtime, no platform, no tooling. Just files. Any system
+                  that reads Markdown can implement the protocol.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
   <!-- Ecosystem -->
-  <section class="section section--alt" id="ecosystem">
+  <section class="section" id="ecosystem">
     <div class="container">
       <p class="section__tag">Ecosystem</p>
       <h2 class="section__title">Open protocol, open possibilities</h2>
@@ -269,6 +458,22 @@
           for AI. The goal is to ensure that the tools we build to relate to machines remain
           transparent, portable, and owned by the people who use them.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section class="section section--alt section--compact" id="download">
+    <div class="container">
+      <div class="download">
+        <div class="download__text">
+          <h3>Download templates</h3>
+          <p>Get the blank template &mdash; a complete scaffold ready to customize. Six Markdown files, one identity.</p>
+        </div>
+        <a href="https://github.com/luishg/soul-protocol/tree/main/templates/blank" target="_blank" rel="noopener noreferrer" class="download__link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          View on GitHub
+        </a>
       </div>
     </div>
   </section>
@@ -351,7 +556,7 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.card, .tree, .note, .section__title, .section__desc, .hero__actions').forEach(el => {
+    document.querySelectorAll('.card, .tree, .note, .section__title, .section__desc, .hero__actions, .accordion, .download').forEach(el => {
       el.classList.add('fade-in');
       observer.observe(el);
     });
