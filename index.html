@@ -62,7 +62,7 @@
         from any specific model or provider.
       </p>
       <div class="hero__actions">
-        <span class="btn btn--primary btn--disabled" aria-disabled="true">Specification — Coming Soon</span>
+        <a href="#template" class="btn btn--primary" data-open-details="template">Specification</a>
         <a href="#architecture" class="btn btn--ghost">How It Works</a>
       </div>
     </div>
@@ -224,7 +224,7 @@
       </div>
 
       <!-- Blank Template accordion -->
-      <details class="accordion">
+      <details class="accordion" id="template">
         <summary>
           <span><span class="accordion__tag">Template</span> Blank template &mdash; the starting scaffold</span>
         </summary>
@@ -537,6 +537,18 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Open details panel and scroll to it
+    document.querySelectorAll('[data-open-details]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const details = document.getElementById(this.dataset.openDetails);
+        if (details) {
+          details.open = true;
+          details.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
