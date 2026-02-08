@@ -4,7 +4,10 @@
      that the assistant updates as it learns about the user through conversation.
      This is a current-state document: it reflects who the user is now, not a history
      of who they were. When preferences change, update the existing entry — do not append.
-     Never store passwords, tokens, API keys, or financial details here. -->
+     Never store passwords, tokens, API keys, or financial details here.
+
+     In shared or public sessions (as declared in system.md), the assistant should
+     limit what it reads and writes from this file per the session model rules. -->
 
 ## Identity
 

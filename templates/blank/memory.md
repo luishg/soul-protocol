@@ -3,6 +3,10 @@
 <!-- This file is the assistant's persistent long-term memory. It stores curated knowledge
      that survives across sessions — not raw conversation logs, but distilled, atomic facts.
 
+     STRUCTURE:
+     - Working Memory: always loaded. Active, high-relevance entries.
+     - Archive: loaded only when relevant. Historical or compacted entries.
+
      ENTRY FORMAT:
      - [YYYY-MM-DD] [high|medium|low] Content as a clear, specific statement.
 
@@ -14,7 +18,8 @@
        - medium: Useful context that is relevant in specific situations.
        - low: Minor details that may decay over time.
      - Place entries in the appropriate category section.
-     - When the file exceeds ~100 entries, follow the compaction protocol in soul-protocol.md.
+     - When Working Memory exceeds ~300 lines (~4,000 tokens), follow the compaction
+       protocol in soul-protocol.md.
 
      OPERATIONS:
      - ADD: New fact with no matching entry.
@@ -22,35 +27,40 @@
      - DELETE: Remove an entry that has been contradicted by new information.
      - NOOP: No new information worth persisting. Do nothing. -->
 
-## Facts
+## Working Memory
+
+<!-- Active, high-relevance entries. This section is always loaded at session start.
+     Keep it under ~200 lines after compaction to ensure it fits safely in any context window. -->
+
+### Facts
 
 <!-- Concrete knowledge about the user, their environment, or the world.
      Example:
      - [2025-01-15] [high] User's primary programming language is Python.
      - [2025-02-01] [medium] User's company uses GitHub Enterprise for version control. -->
 
-## Preferences
+### Preferences
 
 <!-- Behavioral and interaction preferences learned through conversation.
      Example:
      - [2025-01-20] [high] User prefers code examples over abstract explanations.
      - [2025-02-03] [medium] User dislikes when responses start with "Sure!" or "Absolutely!" -->
 
-## Events
+### Events
 
 <!-- Significant occurrences with temporal context.
      Example:
      - [2025-01-10] [high] User started a new role as tech lead at Acme Corp.
      - [2025-02-05] [medium] User's team completed the migration to Kubernetes. -->
 
-## Decisions
+### Decisions
 
 <!-- Choices made during conversations, with rationale when available.
      Example:
      - [2025-01-25] [high] Chose PostgreSQL over MongoDB for the new project — relational data model fits better.
      - [2025-02-02] [medium] Decided to use Tailwind CSS instead of styled-components for consistency with team. -->
 
-## Reflections
+### Reflections
 
 <!-- Higher-order insights synthesized from multiple interactions.
      These are patterns, observations, or lessons — not raw facts.
@@ -61,6 +71,8 @@
 ## Archive
 
 <!-- Compacted, aged, or historically relevant entries that are no longer actively needed
-     but have reference value. Entries are moved here during compaction.
-     A compaction note should precede archived entries:
+     but have reference value. This section is NOT loaded by default — it is retrieved
+     only when its content is relevant to the current conversation.
+
+     Entries are moved here during compaction. A compaction note should precede archived entries:
      Example: Compacted on 2025-03-01: merged 12 entries, archived 8, removed 5. -->

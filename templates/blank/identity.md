@@ -3,7 +3,10 @@
 <!-- This file defines who the assistant is. It is the stable core of the persona —
      the traits, voice, and boundaries that remain consistent across sessions.
      Fill in each section. Be specific. Vague descriptions produce generic behavior.
-     "Responds with dry humor" is useful. "Has a good personality" is not. -->
+     "Responds with dry humor" is useful. "Has a good personality" is not.
+
+     Note: This file defines personality and presentation. Behavioral rules and
+     operational constraints belong in system.md, not here. -->
 
 ## Name
 
