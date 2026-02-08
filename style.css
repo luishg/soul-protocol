@@ -478,6 +478,28 @@ code {
   border-bottom-left-radius: 0;
 }
 
+.card__subtitle {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.card__link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-light);
+  transition: color var(--transition);
+}
+
+.card__link:hover {
+  color: #fff;
+}
+
 /* --- File tree --- */
 .tree {
   max-width: 520px;

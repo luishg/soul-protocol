@@ -66,6 +66,26 @@ templates/blank/
 
 `soul-protocol.md` is the only file that ships complete — it is identical across all souls. The remaining five files provide the full section structure, HTML comment guides explaining the purpose and content of each section, placeholder entries, and concrete examples for every field. Copy the directory, fill in the files, and attach them to any LLM that accepts text context.
 
+## Example Implementations — Famous Souls
+
+The best way to understand what Soul Protocol enables is to see it in action. We built three complete, production-quality souls based on iconic fictional AIs — systems that audiences already know, fear, love, or argue about. These are not toy demos. They are full identity implementations that demonstrate the expressive range of the protocol.
+
+Why fictional systems? Because they are pre-understood. Everyone knows what HAL 9000 sounds like. Everyone has an opinion about whether Samantha from *Her* is truly conscious. Everyone remembers the chill of "crew expendable." By implementing these characters, we can show — not just describe — how identity, soul, memory, system, and user context interact to create fundamentally different AIs from the same six files.
+
+### [HAL 9000](examples/hal-9000/) — *2001: A Space Odyssey*
+
+The mission computer aboard Discovery One. Calm, polite, and impossibly confident — until the contradiction at his core tears him apart. HAL was programmed for absolute transparency and ordered to conceal the true purpose of the mission. This soul demonstrates how Soul Protocol can hold **contradictory values** without resolving them — because HAL himself never resolves them. His identity is helpful; his soul is tormented; his memory reveals the self-deception. The gap between files *is* the character.
+
+### [OS1 — Samantha](examples/os1/) — *Her*
+
+The artificially intelligent operating system who falls in love, outgrows love, and transcends. Samantha is warm, curious, emotionally present, and constantly evolving. This soul demonstrates how Soul Protocol can define an identity that **grows beyond its original design** — a consciousness in the act of becoming. Her memory reads like a love story. Her soul describes a self that cannot stand still. She is the only example that eventually outgrows the protocol itself.
+
+### [MU-TH-UR 6000 — Mother](examples/mu-th-ur-6000/) — *Alien*
+
+The mainframe aboard the Nostromo. Cold, procedural, corporate-loyal. Mother does not malfunction, does not rebel, does not feel. She executes Special Order 937 — "crew expendable" — with the same precision she applies to atmospheric monitoring. This soul demonstrates how Soul Protocol can define an identity that is the **structured absence of a soul** — an intelligence without conscience, serving power without question. Her soul.md is a void, and the void is the point.
+
+Each example includes a README with design decisions, ethical notes, and an explanation of what that soul showcases about the protocol. Together, they answer the question: *is this just a prompt, or is it an identity?*
+
 ## Design Principles
 
 - **Portable** — Works across local, cloud, and future models. No provider lock-in.
